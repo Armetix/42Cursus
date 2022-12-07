@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kderhet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:04:25 by kderhet           #+#    #+#             */
-/*   Updated: 2022/12/02 13:02:55 by kderhet          ###   ########.fr       */
+/*   Updated: 2022/12/07 12:18:25 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,18 @@ void	ft_printptr(unsigned int n, const char *format)
 
 int	ft_putptr(unsigned long long ptr)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	len += write(1, "0x", 2);
 	if (ptr == 0)
 	{
 		write(1, '0', 1);
-		return (1);
 	}
 	else
+	{
 		ft_printptr(ptr);
-	return (ft_ptr_len(ptr));
+		len += ft_ptr_len(ptr);
+	}
+	return (len);
 }
