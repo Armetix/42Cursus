@@ -6,13 +6,14 @@
 #    By: kderhet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 14:01:47 by kderhet           #+#    #+#              #
-#    Updated: 2022/12/07 12:31:35 by kderhet          ###   ########.fr        #
+#    Updated: 2022/12/20 13:07:23 by kderhet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+INCLUDE = ../includes
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra -I 
 AR = ar rcs
 
 SOURCES = ft_bzero ft_isalnum ft_isalpha \
@@ -37,7 +38,7 @@ $(NAME) : $(OBJS)
 	$(AR) -r $@ $?
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	$(CC) -c $(CFLAGS) $(INCLUDE) $?
 
 clean:
 	rm -f $(OBJS)
