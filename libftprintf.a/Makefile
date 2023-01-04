@@ -6,7 +6,7 @@
 #    By: kderhet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/07 11:31:20 by kderhet           #+#    #+#              #
-#    Updated: 2022/12/20 13:15:42 by kderhet          ###   ########.fr        #
+#    Updated: 2023/01/03 10:38:01 by kderhet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	make -C $(LIBFT)
+	mv *.o $(SRCS_DIR)
 	cp libft/libft.a .
 	mv libft.a $(NAME)
 	$(AR) $(NAME) $(OBJS)
@@ -38,6 +39,7 @@ $(SRCS_DIR)%.o : $(SRCS_DIR)%.c
 
 clean : 
 	$(RM) -r $(NAME)
+	$(RM) -r $(OBJS)
 	make clean -C $(LIBFT)
 
 fclean : clean
