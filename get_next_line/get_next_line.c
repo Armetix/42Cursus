@@ -4,15 +4,33 @@ char *get_next_line(int fd)
 {
     char static *stash;
     char *line;
+    int i;
+    int j;
+    int k;
+    int check;
 
-    stash = malloc(sizeof(char) * 25);
+    j = 0;
+    stash = malloc(sizeof(char) * 250);
+    line = malloc(sizeof(char) * 250);
     if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
         return (NULL);
+    check = read(fd, stash, BUFFER_SIZE);
+    while (check != 0)
+    {
+        j += check;
+        i = 0;
+        //k = 0;
+        
+        while (i >= j)
+        {
+            line[i] = stash[k];
+            i++;
+            k++;
+        }
+        check = read(fd, stash, BUFFER_SIZE);
+    }
 
-    
-    read(fd, stash, BUFFER_SIZE);
-
-    return (stash);
+    return (line);
 }
 
 #include <stdio.h>
