@@ -10,4 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 
+int newline_finder(char *stash)
+{
+    int i;
+
+    i = 0;
+    while (stash[i])
+    {
+        if (stash[i] == '\n')
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
+void new_line(char **line, char *stash)
+{
+    int i;
+    int len;
+
+    len = 0;
+    while (stash)
+    {
+        i = 0;
+        while (stash[i])
+        {
+            if (stash[i] == '\n')
+            {
+                len++;
+                break;
+            }
+            len++;
+            i++;
+        }
+        stash++;
+    }
+    *line = malloc(sizeof(char) * (len + 1));
+}

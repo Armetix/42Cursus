@@ -1,53 +1,99 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-char *get_next_line(int fd)
+
+
+void put_in_stash(char *stash, char *buff, int check)
 {
-    char static *stash;
-    char *line;
-    char *buffer;
     int i;
     int j;
-    int k;
-    int l;
-    int check;
 
     i = 0;
     j = 0;
-    check = 1;
-    buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
-        if (!buffer)
-            return (NULL);
-    line = malloc(sizeof(char) * 250);
-    stash = malloc(sizeof(char) * 250);
-    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-        return (NULL);
-    while (check > 0)
+    if (stash == NULL)
     {
-        check = read(fd, buffer, BUFFER_SIZE);
-        j += check;
-        k = 0;   
-        while (i < j)
+        stash = malloc(sizeof(char) * (check + 1));
+        if (!stash)
+            return;
+    }
+    while (stash[i])
+        i++;
+    while (buff[j] && j < check)
+    {
+        stash[i] = buff[j];
+        i++;
+        j++;
+    }
+    stash[i] = '\0';
+    return;
+}
+
+void read_n_stash(int fd, char **stash, int *check)
+{
+    char    *buff;
+
+    while (!newline_finder(*stash) && *check != 0)
+    {
+        buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+        if (!buff)
+            return;
+        *check = read(fd, buff, BUFFER_SIZE);
+        if ((*stash == NULL && *check == 0) || *check == -1)
         {
-            stash[i] = buffer[k];
+            free(buff);
+            return;
+        }
+        buff[*check] = '\0';
+        put_in_stash(*stash, buff, *check);
+        free(buff);
+    }
+}
+
+
+void stash_to_line(char *stash, char **line)
+{
+    int i;
+    int j;
+
+    if (stash == NULL)
+        return;
+    new_line(line, stash);
+    if (!line)
+        return(NULL);
+    while (stash)
+    {
+        i = 0;
+        while (stash[i])
+        {
             if (stash[i] == '\n')
             {
-                l = 0;
-                while (l < i)
-                {
-                    line[l] = stash[l];
-                    l++;
-                }
-                i++;
-                return (line);
+                (*line)[j++] = stash[i];
+                break;
             }
-            i++;
-            k++;
+            (*line)[j++] = stash[i++];
         }
-        
+        stash++;
     }
-    if (check == 0)
+    (*line)[j] = '\0';
+}
+
+char *get_next_line(int fd)
+{
+    static char *stash;
+    char        *line;
+    int         check;
+
+    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
         return (NULL);
+    check = 1;
+    line = NULL;
+    //  1. read from fd and put in stash
+    read_n_stash(fd, &stash, &check);
+    if (stash == NULL)
+        return (NULL);
+    //  2. put from stash in line
+    stash_to_line(stash, &line);
+    //  3. clean stash
     return (line);
 }
 
@@ -57,6 +103,7 @@ char *get_next_line(int fd)
 int main(int argc, char const *argv[])
 {
     int fd1 = open("TestLine.txt", O_RDONLY, 0);
+    printf("%s\n", get_next_line(fd1));
     printf("%s\n", get_next_line(fd1));
     printf("%s\n", get_next_line(fd1));
     return 0;

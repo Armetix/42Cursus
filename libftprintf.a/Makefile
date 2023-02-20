@@ -38,7 +38,6 @@ $(SRCS_DIR)%.o : $(SRCS_DIR)%.c
 	$(CC) -c $(CFLAGS) $(INCLUDE) $?
 
 clean : 
-	$(RM) -r $(NAME)
 	$(RM) -r $(OBJS)
 	make clean -C $(LIBFT)
 

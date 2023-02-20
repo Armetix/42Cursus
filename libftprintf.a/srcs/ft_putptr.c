@@ -42,7 +42,7 @@ void	ft_printptr(uintptr_t n)
 	}
 }
 
-int	ft_putptr(unsigned long long ptr)
+int	ft_putptr(uintptr_t ptr)
 {
 	int	len;
 

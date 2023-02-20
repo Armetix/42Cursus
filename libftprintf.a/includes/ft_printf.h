@@ -26,7 +26,7 @@ int		ft_putpercent(void);
 int		ft_hexa_len(unsigned int n);
 int		ft_puthexa(unsigned int n, const char format);
 int		ft_ptr_len(uintptr_t n);
-int		ft_putptr(unsigned long long ptr);
+int		ft_putptr(uintptr_t ptr);
 int		ft_unsigned_len(unsigned int n);
 int		ft_putunsigned(unsigned int n);
 
