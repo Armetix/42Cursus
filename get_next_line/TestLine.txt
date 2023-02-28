@@ -1,2 +1,10 @@
-Salut c'est un test
-Et ceci aussi!
+ceci
+est
+un
+test
+de
+10
+lignes
+pour
+le
+get_next_line.
