@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:14:42 by kderhet           #+#    #+#             */
-/*   Updated: 2023/02/28 14:14:53 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/03/06 12:56:29 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,99 +15,83 @@
 # define BUFFER_SIZE 1
 #endif
 
-void static	put_in_stash(char **stash, char *buff, int check)
+char static	*put_in_stash(char *stash, char *buff)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	if (*stash == NULL)
-	{
-		*stash = malloc(sizeof(char) * (check + 1));
-		if (!*stash)
-			return ;
-	}
-	while ((*stash)[i])
-		i++;
-	while (buff[j] && j < check)
-	{
-		(*stash)[i] = buff[j];
-		i++;
-		j++;
-	}
-	(*stash)[i] = '\0';
-	return ;
+	char	*temp;
+	
+	temp = ft_strjoin(stash, buff);
+	free(stash);
+	return (temp);
 }
 
-void static	read_n_stash(int fd, char **stash, int *check)
+char static	*read_n_stash(int fd, char *stash, int *check)
 {
 	char	*buff;
 
-	while (!newline_finder(*stash) && *check != 0)
+	if (!stash)
+		stash = ft_calloc(1, 1);
+	buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	while (*check > 0)
 	{
-		buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		if (!buff)
-			return ;
 		*check = read(fd, buff, BUFFER_SIZE);
-		if ((*stash == NULL && *check == 0) || *check == -1)
+		if (*check == -1)
 		{
 			free(buff);
-			return ;
+			return (NULL);
 		}
-		buff[*check] = '\0';
-		put_in_stash(stash, buff, *check);
-		free(buff);
+		buff[*check] = 0;
+		stash = put_in_stash(stash, buff);
+		if (ft_strchr(stash, '\n'))
+			break;
 	}
+	free(buff);
+	return (stash);
 }
 
-void static	stash_to_line(char *stash, char **line)
+char static	*stash_to_line(char *stash)
+{
+	int		i;
+	char	*line;
+	i = 0;
+	if (!stash[i])
+		return (NULL);
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	line = ft_calloc(i + 2, sizeof(char));
+	i = 0;
+	while (stash[i] && stash[i] != '\n')
+	{
+		line[i] = stash[i];
+		i++;
+	}
+	if (stash[i] && stash[i] == '\n')
+		line[i++] = '\n';
+	return (line);
+}
+
+char static	*stash_cleaner(char *stash)
 {
 	int		i;
 	int		j;
-	char	*p;
+	char	*line;
 
+	i = 0;
 	if (stash == NULL)
-		return ;
-	new_line(line, stash, &p);
-	if (!line || !p)
-		return ;
-	i = 0;
-	j = 0;
-	while (stash[i])
-	{
-		if (stash[i] == '\n')
-		{
-			p[j++] = stash[i];
-			break ;
-		}
-		p[j++] = stash[i++];
-	}
-	(*line) = p;
-	(*line)[j] = '\0';
-}
-
-void static	stash_cleaner(char **stash)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while ((*stash)[i])
-	{
-		if ((*stash)[i] == '\n')
-		{
-			j = 0;
-			i++;
-			while ((*stash)[i])
-			{
-				(*stash)[j++] = (*stash)[i++];
-			}
-			(*stash)[j] = '\0';
-			return ;
-		}
+		return (NULL);
+	while (stash[i] && stash[i] != '\n')
 		i++;
+	if (!stash[i])
+	{
+		free(stash);
+		return (NULL);
 	}
+	line = ft_calloc((ft_strlen(stash) - i + 1), sizeof(char));
+	i++;
+	j = 0;
+	while(stash[i])
+		line[j++] = stash[i++];
+	free(stash);
+	return (line);
 }
 
 char	*get_next_line(int fd)
@@ -119,11 +103,13 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	check = 1;
-	line = NULL;
-	read_n_stash(fd, &stash, &check);
+	stash = read_n_stash(fd, stash, &check);
 	if (stash == NULL)
+	{
+		free(stash);
 		return (NULL);
-	stash_to_line(stash, &line);
-	stash_cleaner(&stash);
+	}
+	line = stash_to_line(stash);
+	stash = stash_cleaner(stash);
 	return (line);
 }

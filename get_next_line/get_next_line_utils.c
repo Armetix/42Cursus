@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:27:15 by kderhet           #+#    #+#             */
-/*   Updated: 2023/02/28 13:18:43 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/03/06 12:20:06 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,78 @@ int	newline_finder(char *stash)
 	return (0);
 }
 
-void	new_line(char **line, char *stash, char **p)
+void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-	int	len;
+	unsigned char	*dest;
+	size_t			i;
 
-	len = 0;
+	dest = s;
 	i = 0;
-	while (stash[i])
+	while (i < n)
 	{
-		if (stash[i] == '\n')
-		{
-			len++;
-			break ;
-		}
-		len++;
+		dest[i] = 0;
 		i++;
 	}
-	*line = malloc(sizeof(char) * (len + 1));
-	*p = malloc(sizeof(char) * (len + 1));
-	return ;
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	i;
+	size_t	j;
+	char	*res;
+
+	if (s1 && s2)
+	{
+		res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+		if (!res)
+			return (NULL);
+		i = -1;
+		while (s1[++i])
+		{
+			res[i] = s1[i];
+		}
+		j = 0;
+		while (s2[j])
+		{
+			res[i++] = s2[j];
+			j++;
+		}
+		res[i] = '\0';
+		return (res);
+	}
+	return (NULL);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s == (char) c)
+			return ((char *)s);
+		s++;
+	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
