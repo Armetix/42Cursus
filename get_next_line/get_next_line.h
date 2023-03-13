@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:27:26 by kderhet           #+#    #+#             */
-/*   Updated: 2023/03/06 12:17:15 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/03/08 11:37:20 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 int		newline_finder(char *stash);
 void	new_line(char **line, char *stash);

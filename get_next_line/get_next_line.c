@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:14:42 by kderhet           #+#    #+#             */
-/*   Updated: 2023/03/06 12:56:29 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/03/13 12:03:08 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 char static	*put_in_stash(char *stash, char *buff)
 {
 	char	*temp;
-	
+
 	temp = ft_strjoin(stash, buff);
 	free(stash);
 	return (temp);
@@ -42,7 +42,7 @@ char static	*read_n_stash(int fd, char *stash, int *check)
 		buff[*check] = 0;
 		stash = put_in_stash(stash, buff);
 		if (ft_strchr(stash, '\n'))
-			break;
+			break ;
 	}
 	free(buff);
 	return (stash);
@@ -52,6 +52,7 @@ char static	*stash_to_line(char *stash)
 {
 	int		i;
 	char	*line;
+
 	i = 0;
 	if (!stash[i])
 		return (NULL);
@@ -88,7 +89,7 @@ char static	*stash_cleaner(char *stash)
 	line = ft_calloc((ft_strlen(stash) - i + 1), sizeof(char));
 	i++;
 	j = 0;
-	while(stash[i])
+	while (stash[i])
 		line[j++] = stash[i++];
 	free(stash);
 	return (line);

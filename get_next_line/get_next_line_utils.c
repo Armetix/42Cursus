@@ -6,27 +6,11 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 13:27:15 by kderhet           #+#    #+#             */
-/*   Updated: 2023/03/06 12:20:06 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/03/13 12:03:56 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	newline_finder(char *stash)
-{
-	int	i;
-
-	i = 0;
-	if (stash == NULL)
-		return (0);
-	while (stash[i])
-	{
-		if (stash[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 void	ft_bzero(void *s, size_t n)
 {
