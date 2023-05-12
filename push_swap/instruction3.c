@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   instruction3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 14:18:55 by kderhet           #+#    #+#             */
-/*   Updated: 2023/04/25 14:19:31 by kderhet          ###   ########.fr       */
+/*   Created: 2023/05/04 15:01:40 by kderhet           #+#    #+#             */
+/*   Updated: 2023/05/08 15:15:01 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "includes/libft.h"
-#include "includes/ft_printf.h"
+#include "push_swap.h"
 
-int	main(int argc, char const *argv[])
+void	ft_pb(t_pile **pile_a, t_pile **pile_b)
 {
-	ft_printf("%i\n", ft_printf("%%\n"));
-	return (0);
+	t_pile	*tmp;
+
+	if (!(*pile_a))
+		return ;
+	tmp = *pile_a;
+	*pile_a = (*pile_a)->next;
+	tmp->next = *pile_b;
+	*pile_b = tmp;
+	ft_printf("pb\n");
 }

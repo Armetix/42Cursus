@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:14:42 by kderhet           #+#    #+#             */
-/*   Updated: 2023/03/13 12:03:08 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/03/20 12:46:11 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ char	*get_next_line(int fd)
 	stash = read_n_stash(fd, stash, &check);
 	if (stash == NULL)
 	{
-		free(stash);
 		return (NULL);
 	}
 	line = stash_to_line(stash);
