@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:21:09 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/12 15:56:43 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/12 16:12:37 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	ft_rotate_type_b_a(t_pile *a, t_pile *b)
 	i = ft_case_rra_rrb_a(a, b, b->nombre);
 	while (tmp)
 	{
-		ft_show_pile(tmp);
 		if (i > ft_case_ra_rb_a(a, b, tmp->nombre))
 			i = ft_case_ra_rb_a(a, b, tmp->nombre);
 		if (i > ft_case_rra_rrb_a(a, b, tmp->nombre))

@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:37:00 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/12 13:59:36 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/12 17:02:13 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_sort(t_pile **a)
 
 	b = NULL;
 	if (ft_pile_size(*a) == 2)
-		ft_sa(a);
+		ft_sa(a, 1);
 	else
 	{
 		b = ft_sort_b(a);
@@ -28,12 +28,12 @@ void	ft_sort(t_pile **a)
 		if (i < ft_pile_size(*a) - i)
 		{
 			while ((*a)->nombre != ft_min(*a))
-				ft_ra(a);
+				ft_ra(a, 1);
 		}
 		else
 		{
 			while ((*a)->nombre != ft_min(*a))
-				ft_rra(a);
+				ft_rra(a, 1);
 		}
 	}
 }
@@ -109,20 +109,20 @@ void	ft_sort_three(t_pile **a)
 {
 	if (ft_min(*a) == (*a)->nombre)
 	{
-		ft_rra(a);
-		ft_sa(a);
+		ft_rra(a, 1);
+		ft_sa(a, 1);
 	}
 	else if (ft_max(*a) == (*a)->nombre)
 	{
-		ft_ra(a);
+		ft_ra(a, 1);
 		if (!ft_check_sort(*a))
-			ft_sa(a);
+			ft_sa(a, 1);
 	}
 	else
 	{
 		if (ft_index(*a, ft_max(*a)) == 1)
-			ft_rra(a);
+			ft_rra(a, 1);
 		else
-			ft_sa(a);
+			ft_sa(a, 1);
 	}
 }

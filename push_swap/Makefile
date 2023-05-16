@@ -6,7 +6,7 @@
 #    By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 16:09:05 by kderhet           #+#    #+#              #
-#    Updated: 2023/05/12 14:35:07 by kderhet          ###   ########.fr        #
+#    Updated: 2023/05/16 13:42:09 by kderhet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ AR = ar rcs
 ECHO = echo
 
 SOURCE =	push_swap instruction1 instruction2 instruction3 \
-			utils1 utils2 ft_algorithm ft_free_pile 		 \
+			utils1 utils2 ft_algorithm ft_free_pile_str 	 \
 			ft_error ft_checks ft_rotate_type ft_case_ab	 \
 			ft_apply ft_case_ba
 

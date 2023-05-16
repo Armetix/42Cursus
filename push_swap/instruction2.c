@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:29:55 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/08 15:09:38 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/12 17:01:24 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_rr(t_pile **pile_a, t_pile **pile_b)
 {
-	ft_ra(pile_a);
-	ft_rb(pile_b);
+	ft_ra(pile_a, 0);
+	ft_rb(pile_b, 0);
 	ft_printf("rr\n");
 }
 
@@ -24,7 +24,7 @@ void	ft_rr(t_pile **pile_a, t_pile **pile_b)
 //qui fait que pour last->next = pile_a on rajoute 1,2,3,4
 //après le 5 ce qui donne 5,1,2,3,4 puis on remets le pointeur
 //pile_a sur le premier element de la pile (pile_a = last)
-void	ft_rra(t_pile **pile_a)
+void	ft_rra(t_pile **pile_a, int nb)
 {
 	t_pile	*last;
 	t_pile	*prev_last;
@@ -40,10 +40,11 @@ void	ft_rra(t_pile **pile_a)
 	prev_last->next = NULL;
 	last->next = *pile_a;
 	*pile_a = last;
-	ft_printf("rra\n");
+	if (nb == 1)
+		ft_printf("rra\n");
 }
 
-void	ft_rrb(t_pile **pile_b)
+void	ft_rrb(t_pile **pile_b, int nb)
 {
 	t_pile	*last;
 	t_pile	*prev_last;
@@ -59,13 +60,14 @@ void	ft_rrb(t_pile **pile_b)
 	prev_last->next = NULL;
 	last->next = *pile_b;
 	*pile_b = last;
-	ft_printf("rrb\n");
+	if (nb == 1)
+		ft_printf("rrb\n");
 }
 
 void	ft_rrr(t_pile **pile_a, t_pile **pile_b)
 {
-	ft_rrb(pile_a);
-	ft_rrb(pile_b);
+	ft_rrb(pile_a, 0);
+	ft_rrb(pile_b, 0);
 	ft_printf("rrr\n");
 }
 

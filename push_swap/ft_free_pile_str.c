@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_pile.c                                     :+:      :+:    :+:   */
+/*   ft_free_pile_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:40:22 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/10 12:44:56 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/16 13:45:30 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,19 @@ void	ft_free_pile(t_pile **lst)
 		free(*lst);
 		*lst = tmp;
 	}
+}
+
+void	ft_free_str(char **str)
+{
+	char	*str1;
+
+	if (!str)
+		return ;
+	while (*str)
+	{
+		str1 = *str;
+		str++;
+		free(str1);
+	}
+	*str = NULL;
 }

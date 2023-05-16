@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:41:57 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/12 15:39:35 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/16 13:46:30 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ int	ft_index(t_pile *lst, int nb)
 	return (i);
 }
 
-void	ft_show_pile(t_pile *lst)
-{
-	while (lst)
-	{
-		ft_printf("%d, ", lst->nombre);
-		lst = lst->next;
-	}
-	ft_printf("\n");
-}
+//void	ft_show_pile(t_pile *lst)
+//{
+//	while (lst)
+//	{
+//		ft_printf("%d, ", lst->nombre);
+//		lst = lst->next;
+//	}
+//	ft_printf("\n");
+//}

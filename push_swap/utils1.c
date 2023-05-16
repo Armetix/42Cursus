@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:25:32 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/12 14:34:40 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/16 13:25:23 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,17 @@ t_pile static	*ft_create_pile_node(int value)
 	return (node);
 }
 
-t_pile	*ft_create_pile_a(int argc, const char **argv)
+t_pile	*ft_create_pile_a(char **argv, int i)
 {
-	int		i;
 	t_pile	*pile_a;
 	t_pile	*current;
 	t_pile	*new_node;
 
 	pile_a = NULL;
 	current = NULL;
-	i = 1;
-	while (i < argc)
+	while (argv[i])
 	{
-		new_node = ft_create_pile_node(ft_atoi(argv[i]));
+		new_node = ft_create_pile_node(ft_atoi_push(argv[i]));
 		if (pile_a == NULL)
 		{
 			pile_a = new_node;

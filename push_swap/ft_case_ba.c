@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:14:35 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/12 15:24:44 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/12 16:30:32 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_case_rra_rrb_a(t_pile *a, t_pile *b, int nb)
 	return (i);
 }
 
-int	ft_case_rra_rb_a(t_pile *a, t_pile *b, int nb)
+int	ft_case_ra_rrb_a(t_pile *a, t_pile *b, int nb)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ int	ft_case_rra_rb_a(t_pile *a, t_pile *b, int nb)
 	return (i);
 }
 
-int	ft_case_ra_rrb_a(t_pile *a, t_pile *b, int nb)
+int	ft_case_rra_rb_a(t_pile *a, t_pile *b, int nb)
 {
 	int	i;
 

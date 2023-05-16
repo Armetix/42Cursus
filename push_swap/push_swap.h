@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:31:32 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/12 14:35:14 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/16 13:45:11 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,29 @@ typedef struct s_pile
 	struct s_pile	*prev;
 }	t_pile;
 
-void	ft_sa(t_pile **pile_a);
-void	ft_sb(t_pile **pile_b);
+void	ft_sa(t_pile **pile_a, int nb);
+void	ft_sb(t_pile **pile_b, int nb);
 void	ft_ss(t_pile **pile_a, t_pile **pile_b);
-void	ft_ra(t_pile **pile_a);
-void	ft_rb(t_pile **pile_b);
+void	ft_ra(t_pile **pile_a, int nb);
+void	ft_rb(t_pile **pile_b, int nb);
 void	ft_rr(t_pile **pile_a, t_pile **pile_b);
-void	ft_rra(t_pile **pile_a);
-void	ft_rrb(t_pile **pile_b);
+void	ft_rra(t_pile **pile_a, int nb);
+void	ft_rrb(t_pile **pile_b, int nb);
 void	ft_rrr(t_pile **pile_a, t_pile **pile_b);
 void	ft_pa(t_pile **pile_a, t_pile **pile_b);
 void	ft_pb(t_pile **pile_a, t_pile **pile_b);
 
-t_pile	*ft_create_pile_a(int argc, const char **argv);
+t_pile	*ft_create_pile_a(char **argv, int i);
 
 void	ft_sort(t_pile **a);
 void	ft_sort_three(t_pile **a);
 void	ft_free_pile(t_pile **lst);
+void	ft_free_str(char **str);
 void	ft_error(void);
-void	ft_check_arg(const char **argv);
+void	ft_check_arg(char **argv);
 int		ft_check_dup(t_pile *lst);
 int		ft_check_sort(t_pile *a);
+int		ft_atoi_push(const char *str);
 int		ft_pile_size(t_pile *lst);
 int		ft_max(t_pile *lst);
 int		ft_min(t_pile *lst);
@@ -72,6 +74,6 @@ int		ft_apply_rra_rrb(t_pile **a, t_pile **b, int nb, char c);
 int		ft_apply_rra_rb(t_pile **a, t_pile **b, int nb, char s);
 int		ft_apply_ra_rrb(t_pile **a, t_pile **b, int nb, char s);
 
-void	ft_show_pile(t_pile *lst);
+//void	ft_show_pile(t_pile *lst);
 
 #endif
