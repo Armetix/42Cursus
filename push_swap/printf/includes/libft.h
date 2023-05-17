@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armetix <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:24:01 by armetix           #+#    #+#             */
-/*   Updated: 2022/11/07 11:58:44 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/17 12:56:56 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //# include <string.h>
 //# include <ctype.h>
 
-int			ft_atoi(const char *str);
+size_t		ft_atoi(const char *str);
 void		ft_bzero(void *s, size_t n);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);

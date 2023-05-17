@@ -6,7 +6,7 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:31:32 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/16 13:45:11 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/17 12:52:25 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ft_error(void);
 void	ft_check_arg(char **argv);
 int		ft_check_dup(t_pile *lst);
 int		ft_check_sort(t_pile *a);
-int		ft_atoi_push(const char *str);
 int		ft_pile_size(t_pile *lst);
 int		ft_max(t_pile *lst);
 int		ft_min(t_pile *lst);

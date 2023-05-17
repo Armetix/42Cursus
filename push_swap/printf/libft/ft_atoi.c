@@ -6,13 +6,13 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:13:01 by armetix           #+#    #+#             */
-/*   Updated: 2023/05/16 12:35:19 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/17 12:56:34 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+size_t	ft_atoi(const char *str)
 {
 	size_t	i;
 	size_t	n;
