@@ -6,11 +6,18 @@
 /*   By: kderhet <kderhet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:50:41 by kderhet           #+#    #+#             */
-/*   Updated: 2023/05/16 12:49:26 by kderhet          ###   ########.fr       */
+/*   Updated: 2023/05/19 12:51:35 by kderhet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int static	ft_isnumber(int c)
+{
+	if ((c >= '0' && c <= '9') || (c == '-'))
+		return (1);
+	return (0);
+}
 
 int	ft_check_dup(t_pile *lst)
 {
@@ -41,7 +48,7 @@ void	ft_check_arg(char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if (ft_isalpha(argv[i][j]))
+			if (!ft_isnumber(argv[i][j]))
 				ft_error();
 			j++;
 		}
